@@ -1534,6 +1534,40 @@ namespace librealsense
         throw io_exception(to_string() << "Unexpected error getting static node, status = " << (uint32_t)status);
     }
 
+    bool tm2_sensor::change_pose_origin(const std::string& guid, double& effective_time) const
+    {
+        if (!_tm_dev)
+            throw wrong_api_call_sequence_exception("T2xx tracking device is not available");
+
+        auto status = _tm_dev->ChangePoseOrigin(guid.c_str(), effective_time);
+        if (status == perc::Status::SUCCESS)
+        {
+            return true;
+        }
+
+        effective_time = 0;
+        LOG_ERROR("change_pose_origin on node failed");
+
+        return false;
+    }
+
+    bool tm2_sensor::change_pose_origin(const uint16_t mapId, double& effective_time) const
+    {
+        if (!_tm_dev)
+            throw wrong_api_call_sequence_exception("T2xx tracking device is not available");
+
+        auto status = _tm_dev->ChangePoseOrigin(mapId, effective_time);
+        if (status == perc::Status::SUCCESS)
+        {
+            return true;
+        }
+
+        effective_time = 0;
+        LOG_ERROR("change_pose_origin on map ID failed");
+
+        return false;
+    }
+
 
     bool tm2_sensor::load_wheel_odometery_config(const std::vector<uint8_t>& odometry_config_buf) const
     {
