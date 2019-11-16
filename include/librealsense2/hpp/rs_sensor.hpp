@@ -531,18 +531,18 @@ namespace rs2
             return !!res;
         }
 
-        bool change_pose_origin(const std::string& guid, double& effective_time) const
+        bool set_pose_origin(const std::string& guid, double& effective_time) const
         {
             rs2_error* e = nullptr;
-            auto res = rs2_change_pose_origin_on_node(_sensor.get(), guid.c_str(), &effective_time, &e);
+            auto res = rs2_set_pose_origin_node(_sensor.get(), guid.c_str(), &effective_time, &e);
             error::handle(e);
             return !!res;
         }
 
-        bool change_pose_origin(const uint16_t mapId, double& effective_time) const
+        bool set_pose_origin(const uint16_t mapId, double& effective_time) const
         {
             rs2_error* e = nullptr;
-            auto res = rs2_change_pose_origin_on_map_id(_sensor.get(), mapId, &effective_time, &e);
+            auto res = rs2_set_pose_origin_map_id(_sensor.get(), mapId, &effective_time, &e);
             error::handle(e);
             return !!res;
         }

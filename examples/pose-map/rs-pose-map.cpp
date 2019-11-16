@@ -312,7 +312,7 @@ int main(int argc, char * argv[]) try
                         }
 
                         try {
-                            tm_sensor.change_pose_origin(origin_name, origin_change_effective_time);
+                            tm_sensor.set_pose_origin(origin_name, origin_change_effective_time);
                             objects_in_world[origin_name] = rs2_pose{ origin_pos,rs2_vector{0,0,0},rs2_vector{0,0,0},origin_orient };
                             is_map_aligned = is_origin_loaded = true;
 
@@ -341,7 +341,7 @@ int main(int argc, char * argv[]) try
                     aligned_pose_in_world = align_to_origin_node(device_pose_in_world, origin_pos, origin_orient);
                 }
                 else {
-                    tm_sensor.change_pose_origin(origin_name, origin_change_effective_time);
+                    tm_sensor.set_pose_origin(origin_name, origin_change_effective_time);
                 }
                 aligned_pose_in_world = device_pose_in_world;
             }

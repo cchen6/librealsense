@@ -1899,12 +1899,12 @@ namespace perc {
         return fwToHostStatus((MESSAGE_STATUS)response.header.wStatus);
     }
 
-    Status Device::ChangePoseOrigin(uint16_t mapId, double_t& effectiveTime)
+    Status Device::SetPoseOrigin(uint16_t mapId, double_t& effectiveTime)
     {
-        bulk_message_request_change_origin request = { 0 };
-        bulk_message_response_change_origin response = { 0 };
+        bulk_message_request_set_origin request = { 0 };
+        bulk_message_response_set_origin response = { 0 };
 
-        request.header.wMessageID = SLAM_CHANGE_ORIGIN_ON_MAP_ID;
+        request.header.wMessageID = SLAM_SET_ORIGIN_MAP_ID;
         request.header.dwLength = sizeof(request);
         request.wMapId = mapId;
 
@@ -1932,12 +1932,12 @@ namespace perc {
         return fwToHostStatus((MESSAGE_STATUS)response.header.wStatus);
     }
 
-    Status Device::ChangePoseOrigin(const char* guid, double_t& effectiveTime)
+    Status Device::SetPoseOrigin(const char* guid, double_t& effectiveTime)
     {
-        bulk_message_request_change_origin request = { 0 };
-        bulk_message_response_change_origin response = { 0 };
+        bulk_message_request_set_origin request = { 0 };
+        bulk_message_response_set_origin response = { 0 };
 
-        request.header.wMessageID = SLAM_CHANGE_ORIGIN_ON_NODE;
+        request.header.wMessageID = SLAM_SET_ORIGIN_NODE;
         request.header.dwLength = sizeof(request);
         auto length = perc::stringLength(guid, MAX_GUID_LENGTH);
         if (length > (MAX_GUID_LENGTH - 1))

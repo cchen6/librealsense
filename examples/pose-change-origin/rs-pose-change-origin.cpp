@@ -91,19 +91,19 @@ int main(int argc, char * argv[]) try
                 pose_data.rotation);
             break;
         case GLFW_KEY_C:
-            pose_sensor.change_pose_origin(node_name, effectiveTime);
+            pose_sensor.set_pose_origin(node_name, effectiveTime);
             std::cout << std::endl;
             std::cout << "Change pose to node: Effective Time: " << effectiveTime << std::endl;
             break;
         case GLFW_KEY_0:
-            pose_sensor.change_pose_origin(0, effectiveTime);
+            pose_sensor.set_pose_origin(0, effectiveTime);
             std::cout << std::endl;
             std::cout << "Change pose to map ID 0: Effective Time: " << effectiveTime << std::endl;
             break;
         case GLFW_KEY_1:
             if (is_map_relocalized)
             {
-                pose_sensor.change_pose_origin(1, effectiveTime);
+                pose_sensor.set_pose_origin(1, effectiveTime);
                 std::cout << std::endl;
                 std::cout << "Change pose to map ID 1: Effective Time: " << effectiveTime << std::endl;
             }

@@ -438,22 +438,22 @@ namespace perc
         virtual Status GetStaticNode(IN const char* guid, OUT TrackingData::RelativePose& relativePose) = 0;
 
         /**
-        * @brief ChangePoseOrigin
-        *        Change the output pose origin to the origin of the relocalization map
+        * @brief SetPoseOrigin
+        *        Set the output pose origin to the origin of the relocalization map
         * @param mapId - ID of the map. 0 -- current map, 1 -- loaded map
         * @param effectiveTime - effective time
         * @return Status
         */
-        virtual Status ChangePoseOrigin(IN uint16_t mapId, OUT double_t& effectiveTime) = 0;
+        virtual Status SetPoseOrigin(IN uint16_t mapId, OUT double_t& effectiveTime) = 0;
 
         /**
-        * @brief ChangePoseOrigin
-        *        Change the output pose origin to a static node
+        * @brief SetPoseOrigin
+        *        Set the output pose origin to a static node
         * @param guid - Unique name (Null-terminated C-string) for the static node, max length 127 bytes plus one byte for the terminating null character
         * @param effectiveTime - effective time
         * @return Status
         */
-        virtual Status ChangePoseOrigin(IN const char* guid, OUT double_t& effectiveTime) = 0;
+        virtual Status SetPoseOrigin(IN const char* guid, OUT double_t& effectiveTime) = 0;
 
         /**
         * @brief SetGeoLocation
